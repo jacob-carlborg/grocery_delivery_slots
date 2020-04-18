@@ -1,0 +1,14 @@
+name "grocery_delivery_slots"
+description "A minimal D application."
+authors "Jacob Carlborg"
+copyright "Copyright © 2020, Jacob Carlborg"
+license "Boost"
+
+dependency "asdf" version="~>0.5.7"
+dependency "dyaml" version="~>0.8.0"
+dependency "mustache-d" version="~>0.1.4"
+
+// dflags "-checkaction=context" platform="dmd"
+dflags "-static" platform="ldc"
+
+stringImportPaths "resources/email_templates"

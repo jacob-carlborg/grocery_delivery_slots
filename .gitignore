@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/grocery_delivery_slots
+grocery_delivery_slots.so
+grocery_delivery_slots.dylib
+grocery_delivery_slots.dll
+grocery_delivery_slots.a
+grocery_delivery_slots.lib
+grocery_delivery_slots-test-*
+*.exe
+*.o
+*.obj
+*.lst

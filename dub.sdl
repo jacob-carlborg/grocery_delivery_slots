@@ -9,6 +9,6 @@ dependency "dyaml" version="~>0.8.0"
 dependency "mustache-d" version="~>0.1.4"
 
 // dflags "-checkaction=context" platform="dmd"
-dflags "-static" platform="ldc"
+dflags "-static" platform="linux-ldc"
 
 stringImportPaths "resources/email_templates"

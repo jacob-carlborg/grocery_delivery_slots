@@ -95,7 +95,10 @@ private:
 
     static struct Date
     {
-        @serializedAs!DateProxy .Date date;
+        @serializedAs!DateProxy
+        @serializationKeysIn("completeDate")
+        .Date date;
+
         Availability[] availability;
     }
 
@@ -149,23 +152,7 @@ private:
             string value;
             deserializeScopedString(data, value);
 
-            return DateProxy(toDate(value));
-        }
-
-        static .Date toDate(string value)
-        {
-            const components = value.splitter("/").map!(to!int).array;
-            const currentDate = Clock.currTime.to!(.Date);
-
-            return .Date(currentDate.year, components[1], components[0]);
-        }
-
-        unittest
-        {
-            enum expected = .Date(2020, 4, 13);
-            const result = DateProxy.toDate("13/4");
-
-            assert(result == expected);
+            return DateProxy(.Date.fromISOExtString(value));
         }
     }
 
@@ -529,7 +516,7 @@ unittest
         auto weekPrevIndex = 0;
         auto weekNextIndex = 2;
 
-        auto date = "13/4";
+        auto date = "2020-04-13";
 
         auto id = "4206d4ce-c61d-4985-9d7e-a5ddaf471237";
         auto name = "MÃ¥n 1 Privat A";
@@ -554,7 +541,7 @@ unittest
           "weekNextIndex": %s,
           "dates": [
             {
-              "date": "%s",
+              "completeDate": "%s",
               "availability": [
                 {
                   "id": "%s",
